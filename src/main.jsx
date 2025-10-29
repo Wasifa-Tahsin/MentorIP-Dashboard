@@ -14,6 +14,8 @@ import AddPostOutline from './components/page/AddPostOutline.jsx';
 import FeedBack from './components/page/FeedBack.jsx';
 import FeedbackReply from './components/Card/FeedbackReply.jsx';
 import FeedbackView from './components/Card/FeedbackView.jsx';
+import EditProfile from './components/settings/EditProfile.jsx';
+import ChangePassword from './components/settings/ChangePassword.jsx';
 
 
 const router = createBrowserRouter([
@@ -53,6 +55,14 @@ const router = createBrowserRouter([
       {
         path:'/FeedbackView',
         Component:FeedbackView
+      },
+      {
+        path:'/settings',
+        Component:EditProfile
+      },
+      {
+        path:'/changePassword',
+        Component:ChangePassword
       },
     ]
   },
