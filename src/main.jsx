@@ -11,6 +11,9 @@ import UserManagement from './components/UserManagement/UserManagement.jsx';
 import AddBlog from './components/page/AddBlog.jsx';
 import AddBlogDetails from './components/page/AddBlogDetails.jsx';
 import AddPostOutline from './components/page/AddPostOutline.jsx';
+import FeedBack from './components/page/FeedBack.jsx';
+import FeedbackReply from './components/Card/FeedbackReply.jsx';
+import FeedbackView from './components/Card/FeedbackView.jsx';
 
 
 const router = createBrowserRouter([
@@ -38,6 +41,18 @@ const router = createBrowserRouter([
       {
         path:'/add-post-outline',
         Component:AddPostOutline
+      },
+      {
+        path:'/feedback',
+        Component:FeedBack
+      },
+      {
+        path:'/FeedbackReply',
+        Component:FeedbackReply
+      },
+      {
+        path:'/FeedbackView',
+        Component:FeedbackView
       },
     ]
   },
