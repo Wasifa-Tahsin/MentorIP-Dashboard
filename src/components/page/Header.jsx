@@ -10,6 +10,7 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
     <header className="w-full bg-white shadow-sm px-4 sm:px-6 py-3 flex items-center justify-between">
       {/* Left: Mobile Menu + Logo */}
       <div className="flex items-center gap-2">
+        {/* Hamburger / Close Menu for Mobile */}
         <button
           className="lg:hidden text-red-800 p-2 rounded-md hover:bg-gray-100 transition"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -17,6 +18,7 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
           {isSidebarOpen ? <IoClose size={26} /> : <FiMenu size={24} />}
         </button>
 
+        {/* Logo */}
         <img
           className="w-40 sm:w-52 md:w-60 h-auto object-contain"
           src={headerLogo}
@@ -25,14 +27,18 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
       </div>
 
       {/* Right: Notifications + User */}
-      <div className="flex items-center gap-3">
-        <IoMdNotificationsOutline className="text-3xl sm:text-4xl text-red-800 bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition" />
+      <div className="flex items-center md:gap-3">
+        <IoMdNotificationsOutline className="hidden md:block text-3xl sm:text-4xl text-red-800 bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition" />
+
+        {/* User Image */}
         <img
           className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
           src={logoImage}
           alt="User"
         />
-        <h3 className="font-semibold text-gray-800 text-sm sm:text-base md:text-lg">
+
+        {/* Username: hidden on mobile, visible on tablet and up */}
+        <h3 className="hidden md:block font-semibold text-gray-800 text-sm sm:text-base md:text-lg">
           Marvin McKinney
         </h3>
       </div>

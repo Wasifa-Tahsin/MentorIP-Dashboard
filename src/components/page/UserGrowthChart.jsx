@@ -28,7 +28,7 @@ const UserGrowthChart = () => {
   ];
 
   return (
-    <div className="bg-white rounded-lg shadow p-4 flex-1 h-[400px]">
+    <div className="bg-white rounded-lg shadow p-4 flex-1 h-[350px]">
       {/* Header */}
       <div className="flex justify-between items-center mb-3">
         <h2 className="font-semibold text-gray-800 text-lg">User Growth</h2>
