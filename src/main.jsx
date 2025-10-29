@@ -16,6 +16,7 @@ import FeedbackReply from './components/Card/FeedbackReply.jsx';
 import FeedbackView from './components/Card/FeedbackView.jsx';
 import EditProfile from './components/settings/EditProfile.jsx';
 import ChangePassword from './components/settings/ChangePassword.jsx';
+import Emails from './components/page/Emails.jsx';
 
 
 const router = createBrowserRouter([
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path:'/changePassword',
         Component:ChangePassword
+      },
+      {
+        path:'/email',
+        Component:Emails
       },
     ]
   },
