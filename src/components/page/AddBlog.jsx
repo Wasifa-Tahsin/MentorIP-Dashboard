@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
-import img from '../../assets/images/addblogimg.png'
 import { FiArrowLeft } from "react-icons/fi";
+import imgPlaceholder from '../../assets/images/addblogimg.png';
+
 const AddBlog = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -13,19 +14,25 @@ const AddBlog = () => {
     if (file) setImage(URL.createObjectURL(file));
   };
 
-
+  const handleCreate = () => alert("Blog Created!");
+  const handleCancel = () => {
+    setTitle("");
+    setDesc("");
+    setCategory("");
+    setImage(null);
+  };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-6 font-sans">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 font-sans bg-gray-50 min-h-screen">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-     <div className="flex items-center gap-2">
-              <button className="text-white  rounded-full bg-red-800 ">
-                <FiArrowLeft size={22} />
-              </button>
-              <h2 className="text-lg sm:text-xl font-medium text-gray-800">Add Blog</h2>
-            </div>
-        <button className="bg-[#a13e2d] text-white px-4 py-2 rounded flex items-center gap-2 hover:bg-[#8d3425]">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
+        <div className="flex items-center gap-2">
+          <button className="text-white bg-red-800 rounded-full p-2 hover:bg-red-700 transition">
+            <FiArrowLeft size={20} />
+          </button>
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-800">Add Blog</h2>
+        </div>
+        <button className="bg-[#a13e2d] text-white px-4 py-2 rounded flex items-center gap-2 hover:bg-[#8d3425] transition">
           <FaPlus /> Add Blog
         </button>
       </div>
@@ -34,19 +41,19 @@ const AddBlog = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         {/* Left Side */}
         <div className="flex flex-col text-left">
-          <label className="font-semibold mb-1">Main Title</label>
+          <label className="font-semibold mb-1 text-sm sm:text-base">Main Title</label>
           <input
             type="text"
             placeholder="Type here"
-            className="border border-gray-300 rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="border border-gray-300 rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
 
-          <label className="font-semibold mb-1">Description</label>
+          <label className="font-semibold mb-1 text-sm sm:text-base">Description</label>
           <textarea
             placeholder="Type here"
-            className="border border-gray-300 rounded px-3 py-2 h-24 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="border border-gray-300 rounded px-3 py-2 h-32 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
           />
@@ -54,9 +61,9 @@ const AddBlog = () => {
 
         {/* Right Side */}
         <div className="flex flex-col text-left">
-          <label className="font-semibold mb-1">Categories</label>
+          <label className="font-semibold mb-1 text-sm sm:text-base">Categories</label>
           <select
-            className="border border-gray-300 rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="border border-gray-300 rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
@@ -76,14 +83,13 @@ const AddBlog = () => {
             <option>Renewal</option>
             <option>Trademark</option>
             <option>Utility Model</option>
-            
           </select>
 
           {/* Image Upload */}
           <div className="border-2 border-dashed border-gray-300 rounded-md flex items-center justify-center h-40 relative">
             {image ? (
               <img
-                src={img}
+                src={image}
                 alt="preview"
                 className="w-full h-full object-cover rounded-md"
               />
@@ -109,14 +115,14 @@ const AddBlog = () => {
       </div>
 
       {/* Example Blog Cards */}
-      <div className="flex flex-wrap gap-4 mb-6">
+      <div className="flex flex-wrap gap-4 mb-6 justify-center md:justify-start">
         {[1, 2, 3].map((i) => (
           <div
             key={i}
-            className="w-60 bg-white border border-gray-200 rounded-md shadow-sm overflow-hidden relative"
+            className="w-full sm:w-60 bg-white border border-gray-200 rounded-md shadow-sm overflow-hidden relative"
           >
             <img
-              src={img}
+              src={imgPlaceholder}
               alt="Blog"
               className="w-full h-36 object-cover"
             />
@@ -142,16 +148,16 @@ const AddBlog = () => {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex justify-center items-center gap-4">
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
         <button
-         
-          className="bg-green-600 hover:bg-green-700 text-white px-10 py-2 mt-5 rounded-md font-medium"
+          onClick={handleCreate}
+          className="bg-green-600 hover:bg-green-700 text-white px-10 py-2 mt-5 rounded-md font-medium w-full sm:w-auto transition"
         >
           Create
         </button>
         <button
-          
-          className="bg-red-600 mt-5 hover:bg-red-700 text-white px-10 py-2 rounded-md font-medium"
+          onClick={handleCancel}
+          className="bg-red-600 hover:bg-red-700 text-white px-10 py-2 mt-5 rounded-md font-medium w-full sm:w-auto transition"
         >
           Cancel
         </button>

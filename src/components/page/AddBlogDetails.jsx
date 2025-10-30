@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { CiEdit } from "react-icons/ci";
-import { FaPlus } from "react-icons/fa";
-import { FaCamera, FaVolumeUp } from "react-icons/fa";
+import { FaPlus, FaCamera, FaVolumeUp } from "react-icons/fa";
 import { FiArrowLeft } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
@@ -36,43 +35,48 @@ const AddBlogDetails = () => {
   };
 
   return (
-    <div className="container mx-auto px-6 py-6 font-sans">
-      {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-     <div className="flex items-center gap-2">
-                  <button className="text-white  rounded-full bg-red-800 ">
-                    <FiArrowLeft size={22} />
-                  </button>
-                  <h2 className="text-lg sm:text-xl font-medium text-gray-800">Add Blog Details</h2>
-                </div>
-        <button className="bg-[#a13e2d] text-white px-4 py-2 rounded flex items-center gap-2 hover:bg-[#8d3425]">
+    <div className="container mx-auto px-4 sm:px-6 py-6 font-sans bg-gray-50 min-h-screen">
+      {/* ===== Header ===== */}
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
+        <div className="flex items-center gap-2">
+          <button className="text-white bg-red-800 rounded-full p-2 hover:bg-red-700 transition">
+            <FiArrowLeft size={20} />
+          </button>
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
+            Add Blog Details
+          </h2>
+        </div>
+
+        <button className="bg-[#a13e2d] text-white px-4 py-2 rounded flex items-center gap-2 hover:bg-[#8d3425] transition">
           <FaPlus /> Add Blog Details
         </button>
       </div>
 
-      {/* Editor Toolbar (simple static UI like in screenshot) */}
-      <div className=" justify-between rounded mb-5 px-3 py-2 flex gap-3 items-center text-gray-600 text-sm">
-        <div className="space-x-2 bg-gray-50">
-          <button className="font-bold bg-gray-100">B</button>
-        <button className="italic">I</button>
-        <button className="underline">U</button>
-        <button>•</button>
-        <button>1.</button>
-        <button>–</button>
-        <button>→</button>
+      {/* ===== Editor Toolbar ===== */}
+      <div className="flex justify-between items-center rounded mb-5 px-3 py-2 bg-white shadow-sm border border-gray-200 text-gray-600 text-sm">
+        <div className="flex ">
+          <button className="font-bold bg-gray-100 px-2 py-1 rounded">B</button>
+          <button className="italic bg-gray-100 px-2 py-1 rounded">I</button>
+          <button className="underline bg-gray-100 px-2 py-1 rounded">U</button>
+          <button className="bg-gray-100 px-2 py-1 rounded">•</button>
+          <button className="bg-gray-100 px-2 py-1 rounded">1.</button>
+          <button className="bg-gray-100 px-2 py-1 rounded">–</button>
+          <button className="bg-gray-100 px-2 py-1 rounded">→</button>
         </div>
 
-        <div className="flex gap-2 text-red-800">
-          <CiEdit />
-          <RiDeleteBin6Line />
+        <div className="flex gap-3 text-red-800">
+          <CiEdit size={18} />
+          <RiDeleteBin6Line size={18} />
         </div>
       </div>
 
-      {/* Form Layout */}
+      {/* ===== Form Section ===== */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        {/* Left Side */}
+        {/* ----- Left Side ----- */}
         <div className="flex flex-col text-left">
-          <label className="font-semibold mb-1">Main Title</label>
+          <label className="font-semibold mb-1 text-sm sm:text-base">
+            Main Title
+          </label>
           <input
             type="text"
             placeholder="Type here"
@@ -81,7 +85,9 @@ const AddBlogDetails = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
 
-          <label className="font-semibold mb-1">Sub Title</label>
+          <label className="font-semibold mb-1 text-sm sm:text-base">
+            Sub Title
+          </label>
           <input
             type="text"
             placeholder="Type here"
@@ -90,24 +96,28 @@ const AddBlogDetails = () => {
             onChange={(e) => setSubtitle(e.target.value)}
           />
 
-          <label className="font-semibold mb-1">Description</label>
+          <label className="font-semibold mb-1 text-sm sm:text-base">
+            Description
+          </label>
           <textarea
             placeholder="Type here"
-            className="border border-gray-300 rounded px-3 py-2 h-32 focus:ring-2 focus:ring-blue-400 outline-none"
+            className="border border-gray-300 rounded px-3 py-2 h-32 focus:ring-2 focus:ring-blue-400 outline-none resize-none"
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
           />
         </div>
 
-        {/* Right Side */}
+        {/* ----- Right Side ----- */}
         <div className="flex flex-col text-left">
-          <label className="font-semibold mb-1">Categories</label>
+          <label className="font-semibold mb-1 text-sm sm:text-base">
+            Categories
+          </label>
           <select
             className="border border-gray-300 rounded px-3 py-2 mb-4 focus:ring-2 focus:ring-blue-400 outline-none"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-           <option>Select Categories</option>
+            <option>Select Categories</option>
             <option>Assignment</option>
             <option>Bangladesh</option>
             <option>Design</option>
@@ -125,7 +135,9 @@ const AddBlogDetails = () => {
             <option>Utility Model</option>
           </select>
 
-          <label className="font-semibold mb-1">Tags</label>
+          <label className="font-semibold mb-1 text-sm sm:text-base">
+            Tags
+          </label>
           <select
             className="border border-gray-300 rounded px-3 py-2 mb-4 focus:ring-2 focus:ring-blue-400 outline-none"
             value={tags}
@@ -138,7 +150,7 @@ const AddBlogDetails = () => {
           </select>
 
           {/* Image Upload */}
-          <div className="border-2 border-dashed border-gray-300 rounded-md flex items-center justify-center h-36 mb-4 relative">
+          <div className="border-2 border-dashed border-gray-300 rounded-md flex items-center justify-center h-40 sm:h-44 mb-4 bg-white relative">
             {image ? (
               <img
                 src={image}
@@ -149,7 +161,7 @@ const AddBlogDetails = () => {
               <>
                 <label
                   htmlFor="file-upload"
-                  className="text-gray-500 cursor-pointer flex flex-col items-center"
+                  className="text-gray-500 cursor-pointer flex flex-col items-center text-sm"
                 >
                   <FaCamera className="text-2xl mb-1" />
                   <span>Add Image</span>
@@ -166,14 +178,14 @@ const AddBlogDetails = () => {
           </div>
 
           {/* Audio Upload */}
-          <div className="border-2 border-dashed border-gray-300 rounded-md flex items-center justify-center h-20">
+          <div className="border-2 border-dashed border-gray-300 rounded-md flex items-center justify-center h-20 sm:h-24 bg-white">
             {audio ? (
               <p className="text-gray-600 text-sm">{audio}</p>
             ) : (
               <>
                 <label
                   htmlFor="audio-upload"
-                  className="text-gray-500 cursor-pointer flex flex-col items-center"
+                  className="text-gray-500 cursor-pointer flex flex-col items-center text-sm"
                 >
                   <FaVolumeUp className="text-xl mb-1" />
                   <span>Add Audio</span>
@@ -191,17 +203,17 @@ const AddBlogDetails = () => {
         </div>
       </div>
 
-      {/* Action Buttons */}
-      <div className="flex justify-center gap-6">
+      {/* ===== Action Buttons ===== */}
+      <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
         <button
           onClick={handleCreate}
-          className="bg-green-600 hover:bg-green-700 text-white px-10 py-2 rounded-md font-medium"
+          className="bg-green-600 hover:bg-green-700 text-white px-8 py-2 rounded-md font-medium text-sm sm:text-base transition"
         >
           Create
         </button>
         <button
           onClick={handleCancel}
-          className="bg-red-600 hover:bg-red-700 text-white px-10 py-2 rounded-md font-medium"
+          className="bg-red-600 hover:bg-red-700 text-white px-8 py-2 rounded-md font-medium text-sm sm:text-base transition"
         >
           Cancel
         </button>

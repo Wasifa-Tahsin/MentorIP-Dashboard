@@ -23,49 +23,62 @@ const AddPostOutline = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleCreate = () => alert("Post Outline Created!");
+  const handleCancel = () =>
+    setFormData({
+      mainTitle: "",
+      subTitle: "",
+      preStep: "",
+      stage1: "",
+      stage1A: "",
+      stage2: "",
+      stage2A: "",
+      stage3: "",
+      postReg: "",
+      finalSubTitle: "",
+      category: "",
+    });
 
- 
   return (
-    <div className="container mx-auto px-6 py-6 font-sans">
-      {/* Header */}
+    <div className="container mx-auto px-4 sm:px-6 py-6 font-sans bg-gray-50 min-h-screen">
+      {/* ===== Header ===== */}
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
+        <div className="flex items-center gap-2">
+          <button className="text-white bg-red-800 rounded-full p-2 hover:bg-red-700 transition">
+            <FiArrowLeft size={20} />
+          </button>
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
+            Add Post Outline
+          </h2>
+        </div>
 
+        <button className="bg-[#a13e2d] text-white px-4 py-2 rounded flex items-center gap-2 hover:bg-[#8d3425] transition">
+          <FaPlus /> Add Post Outline
+        </button>
+      </div>
 
-       <div className="flex justify-between items-center mb-6">
-           <div className="flex items-center gap-2">
-                        <button className="text-white  rounded-full bg-red-800 ">
-                          <FiArrowLeft size={22} />
-                        </button>
-                        <h2 className="text-lg sm:text-xl font-medium text-gray-800">Add Post Outline</h2>
-                      </div>
-              <button className="bg-[#a13e2d] text-white px-4 py-2 rounded flex items-center gap-2 hover:bg-[#8d3425]">
-                <FaPlus /> Add Post Outline
-              </button>
-            </div>
+      {/* ===== Toolbar ===== */}
+      <div className="flex justify-between items-center rounded mb-5 px-3 py-2 bg-white shadow-sm border border-gray-200 text-gray-600 text-sm">
+        <div className="flex flex-wrap gap-2">
+          <button className="font-bold bg-gray-100 px-2 py-1 rounded">B</button>
+          <button className="italic bg-gray-100 px-2 py-1 rounded">I</button>
+          <button className="underline bg-gray-100 px-2 py-1 rounded">U</button>
+          <button className="bg-gray-100 px-2 py-1 rounded">•</button>
+          <button className="bg-gray-100 px-2 py-1 rounded">1.</button>
+          <button className="bg-gray-100 px-2 py-1 rounded">–</button>
+          <button className="bg-gray-100 px-2 py-1 rounded">→</button>
+        </div>
 
+        <div className="flex gap-3 text-red-800">
+          <CiEdit size={18} />
+          <RiDeleteBin6Line size={18} />
+        </div>
+      </div>
 
-
-            {/* ..... */}
-      <div className=" justify-between rounded mb-5 px-3 py-2 flex gap-3 items-center text-gray-600 text-sm">
-             <div className="space-x-2 bg-gray-50">
-               <button className="font-bold bg-gray-100">B</button>
-             <button className="italic">I</button>
-             <button className="underline">U</button>
-             <button>•</button>
-             <button>1.</button>
-             <button>–</button>
-             <button>→</button>
-             </div>
-     
-             <div className="flex gap-2 text-red-800">
-               <CiEdit />
-               <RiDeleteBin6Line />
-             </div>
-           </div>
-
-      {/* Form */}
+      {/* ===== Form ===== */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        {/* Left Side */}
-        <div className="flex flex-col">
+        {/* ----- Left Side ----- */}
+        <div className="flex  flex-col text-left">
           {[
             { label: "Main Title", name: "mainTitle" },
             { label: "Sub Title", name: "subTitle" },
@@ -75,33 +88,37 @@ const AddPostOutline = () => {
             { label: "Stage 2", name: "stage2" },
             { label: "Stage 2A", name: "stage2A" },
             { label: "Stage 3", name: "stage3" },
-            { label: "Post- Registration", name: "postReg" },
-            { label: "Sub Title", name: "finalSubTitle" },
+            { label: "Post-Registration", name: "postReg" },
+            { label: "Final Sub Title", name: "finalSubTitle" },
           ].map((item, index) => (
             <div key={index} className="mb-4">
-              <label className="font-semibold mb-1 block text-left">{item.label}</label>
+              <label className="font-semibold mb-1 block text-sm sm:text-base text-gray-700">
+                {item.label}
+              </label>
               <input
                 type="text"
                 name={item.name}
                 placeholder="Type here"
                 value={formData[item.name]}
                 onChange={handleChange}
-                className="border border-gray-300 text-left rounded px-3 py-2 w-full focus:ring-2 focus:ring-blue-400 outline-none"
+                className="border border-gray-300 rounded px-3 py-2 w-full focus:ring-2 focus:ring-blue-400 outline-none text-sm sm:text-base"
               />
             </div>
           ))}
         </div>
 
-        {/* Right Side */}
+        {/* ----- Right Side ----- */}
         <div className="flex flex-col text-left">
-          <label className="font-semibold mb-1">Categories</label>
+          <label className="font-semibold mb-1 text-sm sm:text-base text-gray-700">
+            Categories
+          </label>
           <select
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="border border-gray-300 rounded px-3 py-2 mb-4 focus:ring-2 focus:ring-blue-400 outline-none"
+            className="border border-gray-300 rounded px-3 py-2 mb-4 focus:ring-2 focus:ring-blue-400 outline-none text-sm sm:text-base"
           >
-             <option>Select Categories</option>
+            <option>Select Categories</option>
             <option>Assignment</option>
             <option>Bangladesh</option>
             <option>Design</option>
@@ -121,17 +138,17 @@ const AddPostOutline = () => {
         </div>
       </div>
 
-      {/* Buttons */}
-      <div className="flex justify-center gap-6 mt-10">
+      {/* ===== Action Buttons ===== */}
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-10">
         <button
-         
-          className="bg-green-600 hover:bg-green-700 text-white px-10 py-2 rounded-md font-medium"
+          onClick={handleCreate}
+          className="bg-green-600 hover:bg-green-700 text-white px-8 py-2 rounded-md font-medium text-sm sm:text-base transition w-full sm:w-auto"
         >
           Create
         </button>
         <button
-         
-          className="bg-red-600 hover:bg-red-700 text-white px-10 py-2 rounded-md font-medium"
+          onClick={handleCancel}
+          className="bg-red-600 hover:bg-red-700 text-white px-8 py-2 rounded-md font-medium text-sm sm:text-base transition w-full sm:w-auto"
         >
           Cancel
         </button>

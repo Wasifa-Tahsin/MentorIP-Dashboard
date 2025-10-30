@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { LiaEye, LiaReplySolid } from "react-icons/lia";
-import { LuEye } from "react-icons/lu";
-import image from '../../assets/images/logoimage.png'
+import image from '../../assets/images/logoimage.png';
 import { FiArrowLeft, FiSearch } from "react-icons/fi";
 import { Link } from "react-router";
+
 const FeedBack = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
   const feedbacks = [
     { id: "#001", date: "2025-10-29", username: "Dindiniya", description: "Great service!" },
     { id: "#002", date: "2025-10-28", username: "Rafi", description: "Could be better." },
@@ -19,35 +21,38 @@ const FeedBack = () => {
     { id: "#011", date: "2025-10-19", username: "Zahid", description: "Average experience." },
   ];
 
+  const filteredFeedbacks = feedbacks.filter(
+    fb =>
+      fb.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      fb.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      fb.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <section className="container mx-auto p-4">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div className="flex items-center gap-2">
+          <button className="text-red-600 hover:text-red-700" aria-label="Go back">
+            <FiArrowLeft size={22} />
+          </button>
+          <h2 className="text-lg sm:text-xl font-medium text-gray-800">FeedBack</h2>
+        </div>
 
+        {/* Search Bar */}
+        <div className="relative w-full sm:w-64">
+          <FiSearch className="absolute left-3 top-2.5 text-gray-400" size={18} />
+          <input
+            type="text"
+            placeholder="Search"
+            className="w-full border border-gray-300 rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-red-400"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      </div>
 
-
-
-
-         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                {/* Left Section */}
-                <div className="flex items-center gap-2">
-                  <button className="text-red-600 hover:text-red-700">
-                    <FiArrowLeft size={22} />
-                  </button>
-                  <h2 className="text-lg sm:text-xl font-medium text-gray-800">FeedBack</h2>
-                </div>
-        
-                {/* Search Bar */}
-                <div className="relative w-full sm:w-64">
-                  <FiSearch className="absolute left-3 top-2.5 text-gray-400" size={18} />
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    className="w-full border border-gray-300 rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-red-400"
-                  />
-                </div>
-              </div>
-
-
-
+      {/* Feedback Table */}
       <div className="bg-white shadow rounded-lg overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200 text-left">
           <thead className="bg-gray-100">
@@ -61,32 +66,40 @@ const FeedBack = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {feedbacks.map((fb, index) => (
-              <tr key={index} className="hover:bg-gray-50">
+            {filteredFeedbacks.map((fb) => (
+              <tr key={fb.id} className="hover:bg-gray-50">
                 <td className="py-3 px-4 text-gray-700">{fb.id}</td>
                 <td className="py-3 px-4 text-gray-700">{fb.date}</td>
-               
-
-
-               <td className="py-3 px-4 text-gray-700">
-  <div className="flex items-center gap-3">
-    <img
-      className="w-10 h-10 rounded-full object-cover"
-      src={image} // replace with your user image variable
-      alt={fb.username}
-    />
-    <span>{fb.username}</span>
-  </div>
-</td>
-
-                
-               
+                <td className="py-3 px-4 text-gray-700">
+                  <div className="flex items-center gap-3">
+                    <img
+                      className="w-10 h-10 rounded-full object-cover"
+                      src={image}
+                      alt={fb.username}
+                    />
+                    <span>{fb.username}</span>
+                  </div>
+                </td>
                 <td className="py-3 px-4 text-gray-700">{fb.description}</td>
                 <td className="py-3 px-4 text-center">
-                  <Link to='/FeedbackView' state={fb}><button className="text-white p-1 rounded-full bg-red-700 hover:underline"><LiaEye /></button></Link>
+                  <Link to="/FeedbackView" state={fb}>
+                    <button
+                      className="text-white p-1 rounded-full bg-red-700 hover:bg-red-800"
+                      aria-label="View feedback"
+                    >
+                      <LiaEye />
+                    </button>
+                  </Link>
                 </td>
                 <td className="py-3 px-4 text-center">
-                  <Link to='/FeedbackReply'><button className="text-white rounded-full bg-green-500 p-1 hover:underline"><LiaReplySolid /></button></Link>
+                  <Link to="/FeedbackReply" state={fb}>
+                    <button
+                      className="text-white rounded-full bg-green-500 p-1 hover:bg-green-600"
+                      aria-label="Reply feedback"
+                    >
+                      <LiaReplySolid />
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}
