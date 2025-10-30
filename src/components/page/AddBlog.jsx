@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import img from '../../assets/images/addblogimg.png'
+import { FiArrowLeft } from "react-icons/fi";
 const AddBlog = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -18,7 +19,12 @@ const AddBlog = () => {
     <div className="max-w-6xl mx-auto px-6 py-6 font-sans">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-semibold">Add Blog</h2>
+     <div className="flex items-center gap-2">
+              <button className="text-white  rounded-full bg-red-800 ">
+                <FiArrowLeft size={22} />
+              </button>
+              <h2 className="text-lg sm:text-xl font-medium text-gray-800">Add Blog</h2>
+            </div>
         <button className="bg-[#a13e2d] text-white px-4 py-2 rounded flex items-center gap-2 hover:bg-[#8d3425]">
           <FaPlus /> Add Blog
         </button>
@@ -27,7 +33,7 @@ const AddBlog = () => {
       {/* Form */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         {/* Left Side */}
-        <div className="flex flex-col">
+        <div className="flex flex-col text-left">
           <label className="font-semibold mb-1">Main Title</label>
           <input
             type="text"
@@ -47,7 +53,7 @@ const AddBlog = () => {
         </div>
 
         {/* Right Side */}
-        <div className="flex flex-col">
+        <div className="flex flex-col text-left">
           <label className="font-semibold mb-1">Categories</label>
           <select
             className="border border-gray-300 rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -114,7 +120,7 @@ const AddBlog = () => {
               alt="Blog"
               className="w-full h-36 object-cover"
             />
-            <div className="p-3">
+            <div className="p-3 text-left">
               <h4 className="text-sm font-semibold leading-tight">
                 COMMON GROUNDS FOR TRADEMARK OBJECTIONS IN BANGLADESH
               </h4>

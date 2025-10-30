@@ -83,10 +83,10 @@ const FeedBack = () => {
                
                 <td className="py-3 px-4 text-gray-700">{fb.description}</td>
                 <td className="py-3 px-4 text-center">
-                  <Link to='/FeedbackView' state={fb}><button className="text-green-600 hover:underline"><LiaEye /></button></Link>
+                  <Link to='/FeedbackView' state={fb}><button className="text-white p-1 rounded-full bg-red-700 hover:underline"><LiaEye /></button></Link>
                 </td>
                 <td className="py-3 px-4 text-center">
-                  <Link to='/FeedbackReply'><button className="text-green-600 hover:underline"><LiaReplySolid /></button></Link>
+                  <Link to='/FeedbackReply'><button className="text-white rounded-full bg-green-500 p-1 hover:underline"><LiaReplySolid /></button></Link>
                 </td>
               </tr>
             ))}

@@ -31,12 +31,15 @@ const Dashboard = () => {
 
         {/* Recent Users Table */}
         <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4 sm:p-6 overflow-x-auto">
-          <h2 className="font-semibold text-gray-800 mb-4 text-lg">Recent Users</h2>
+          <div className="flex justify-between">
+            <h2 className="font-semibold text-gray-800 mb-4 text-lg">Recent User</h2>
+          <h2 className="font-semibold text-red-800 mb-4 text-lg">View All</h2>
+          </div>
           <table className="min-w-full text-left border-collapse text-sm sm:text-base">
             <thead>
               <tr className="border-b bg-gray-100 text-gray-700">
                 <th className="py-3 px-4 font-medium">S No.</th>
-                <th className="py-3 px-4 font-medium">User</th>
+                <th className="py-3 px-4 font-medium">Name</th>
                 <th className="py-3 px-4 font-medium hidden md:table-cell">Email</th>
                 <th className="py-3 px-4 font-medium hidden sm:table-cell">Contact No</th>
                 <th className="py-3 px-4 font-medium text-center">Action</th>
@@ -69,10 +72,10 @@ const Dashboard = () => {
                   {/* Actions */}
                   <td className="py-3 px-4 text-center">
                     <div className="flex justify-center gap-3">
-                      <button className="text-green-600 hover:text-green-700 transition">
+                      <button className="text-gray-800  transition">
                         <FiEye size={18} />
                       </button>
-                      <button className="text-red-600 hover:text-red-700 transition">
+                      <button className="text-gray-800 transition">
                         <MdOutlineDangerous size={20} />
                       </button>
                     </div>

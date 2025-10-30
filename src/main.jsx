@@ -17,6 +17,7 @@ import FeedbackView from './components/Card/FeedbackView.jsx';
 import EditProfile from './components/settings/EditProfile.jsx';
 import ChangePassword from './components/settings/ChangePassword.jsx';
 import Emails from './components/page/Emails.jsx';
+import EmailViewReply from './components/Card/EmailViewReply.jsx';
 
 
 const router = createBrowserRouter([
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path:'/email',
         Component:Emails
+      },
+      {
+        path:'/emailReply',
+        Component:EmailViewReply
       },
     ]
   },
